@@ -1,4 +1,4 @@
-﻿<script setup lang="ts">
+<script setup lang="ts">
 import type { Product } from "../../../shared/types";
 const route = useRoute();
 const { data: product, error } = await useFetch<Product>(
@@ -67,9 +67,6 @@ useSeoMeta({
         </div>
       </div>
       <div class="pt-5 max-[680px]:pt-2.5">
-        <p class="text-[10px] font-semibold tracking-[1.5px] text-muted">
-          KRAUTUVÄ–S GÄ–RYBÄ–S
-        </p>
         <h1
           class="text-4xl font-semibold leading-tight tracking-[-1.2px] max-[1000px]:text-[28px] max-[680px]:text-[29px]"
         >
@@ -115,16 +112,6 @@ useSeoMeta({
         >
           <span />{{ variant?.available ? "Yra kataloge" : "Å iuo metu nÄ—ra" }}
         </p>
-        <div
-          class="my-6 flex items-center gap-4 rounded bg-[#edf0e5] p-4 [&_p]:m-0 [&_p]:text-xs [&_p]:leading-relaxed [&_p]:text-[#6a755f]"
-        >
-          <AppIcon name="leaf" :size="24" />
-          <p>
-            Kol kas kvieÄiame pasiÅ¾valgyti.<br /><strong
-              >UÅ¾sakymai Å¡ioje parduotuvÄ—je dar nepriimami.</strong
-            >
-          </p>
-        </div>
         <div
           class="mt-6 border-t border-line pt-6 [&>h2]:mb-4 [&>h2]:text-[19px] [&>p]:whitespace-pre-line [&>p]:text-sm [&>p]:leading-relaxed [&>p]:text-[#68715f]"
         >

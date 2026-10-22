@@ -34,12 +34,11 @@ const money = (amount: number) =>
         </h3>
         <p class="mb-3 text-[10px] text-muted">{{ product.unit }}</p>
         <div
-          class="flex items-center justify-between gap-1.5 border-t border-line pt-2.5 [&>strong]:text-base [&>strong]:font-semibold [&>span]:text-[10px] [&>span]:text-[#7d846f] max-[680px]:[&>strong]:text-sm max-[680px]:[&>span]:text-[9px] max-[680px]:[&>span>span]:hidden"
+          class="flex items-center justify-between gap-1.5 border-t border-line pt-2.5 [&>strong]:text-base [&>strong]:font-semibold max-[680px]:[&>strong]:text-sm"
         >
           <strong>{{
             product.amount === null ? "Kaina nenurodyta" : money(product.amount)
-          }}</strong
-          ><span>PerÅ¾iÅ«rÄ—ti <span aria-hidden="true">â†—</span></span>
+          }}</strong>
         </div>
       </div>
     </NuxtLink>
