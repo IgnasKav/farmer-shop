@@ -24,3 +24,21 @@ export interface Catalog {
   page: number
   pages: number
 }
+
+export interface CartItem {
+  id: string
+  variantId: string
+  productHandle: string
+  title: string
+  variantTitle: string
+  thumbnail: string | null
+  quantity: number
+  unitPrice: number
+  total: number
+}
+export interface Cart {
+  id: string | null
+  items: CartItem[]
+  itemCount: number
+  total: number
+}

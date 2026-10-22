@@ -26,14 +26,17 @@ const config = useRuntimeConfig();
           ></span
         ></NuxtLink
       >
-      <nav
-        class="text-[13px] font-semibold max-[680px]:text-[11px]"
-        aria-label="Pagrindinė navigacija"
-      >
-        <NuxtLink class="border-b border-current py-2" to="/#katalogas"
-          >Produktai</NuxtLink
+      <div class="flex items-center gap-6">
+        <nav
+          class="text-[13px] font-semibold max-[680px]:text-[11px]"
+          aria-label="Pagrindinė navigacija"
         >
-      </nav>
+          <NuxtLink class="border-b border-current py-2" to="/#katalogas"
+            >Produktai</NuxtLink
+          >
+        </nav>
+        <CartDrawer />
+      </div>
     </header>
     <NuxtLoadingIndicator color="#45633c" />
     <NuxtPage />

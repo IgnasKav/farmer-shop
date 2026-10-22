@@ -24,6 +24,20 @@ const money = (amount: number) =>
   new Intl.NumberFormat("lt-LT", { style: "currency", currency: "EUR" }).format(
     amount,
   );
+const { add, pending, error: cartError, isOpen: cartOpen } = useCart();
+const quantity = ref(1);
+const justAdded = ref(false);
+const canBuy = computed(
+  () => !!variant.value?.available && variant.value.amount != null,
+);
+watch([selected, quantity], () => {
+  justAdded.value = false;
+});
+async function addToCart() {
+  if (!variant.value || !canBuy.value) return;
+  justAdded.value = await add(variant.value.id, quantity.value);
+  if (justAdded.value) cartOpen.value = true;
+}
 useSeoMeta({
   title: () => `${product.value?.title || "Produktas"} — Ūkio krautuvė`,
   description: () => product.value?.description.slice(0, 160),
@@ -111,6 +125,47 @@ useSeoMeta({
           }"
         >
           <span />{{ variant?.available ? "Yra kataloge" : "Šiuo metu nėra" }}
+        </p>
+        <div class="mt-6 flex flex-wrap items-center gap-3">
+          <div
+            class="inline-flex items-center rounded-[5px] border border-line bg-white"
+          >
+            <button
+              type="button"
+              class="grid size-11 place-items-center disabled:opacity-40"
+              :disabled="quantity <= 1"
+              aria-label="Sumažinti kiekį"
+              @click="quantity--"
+            >
+              <AppIcon name="minus" :size="16" />
+            </button>
+            <span class="min-w-8 text-center text-sm" aria-live="polite">{{
+              quantity
+            }}</span>
+            <button
+              type="button"
+              class="grid size-11 place-items-center disabled:opacity-40"
+              :disabled="quantity >= 99"
+              aria-label="Padidinti kiekį"
+              @click="quantity++"
+            >
+              <AppIcon name="plus" :size="16" />
+            </button>
+          </div>
+          <button
+            type="button"
+            class="inline-flex min-h-11 items-center justify-center gap-3 rounded-[5px] bg-green px-[21px] py-3.5 text-xs font-semibold text-white hover:bg-[#29442d] disabled:cursor-not-allowed disabled:opacity-50"
+            :disabled="!canBuy || pending"
+            @click="addToCart"
+          >
+            <AppIcon name="cart" :size="18" /> Į krepšelį
+          </button>
+        </div>
+        <p class="mt-3 min-h-4 text-xs" aria-live="polite">
+          <span v-if="justAdded" class="text-[#536b42]">Įdėta į krepšelį.</span>
+          <span v-else-if="cartError" class="text-[#96705b]">{{
+            cartError
+          }}</span>
         </p>
         <div
           class="mt-6 border-t border-line pt-6 [&>h2]:mb-4 [&>h2]:text-[19px] [&>p]:whitespace-pre-line [&>p]:text-sm [&>p]:leading-relaxed [&>p]:text-[#68715f]"
