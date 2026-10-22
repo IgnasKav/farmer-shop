@@ -1,4 +1,4 @@
-<script setup lang="ts">
+﻿<script setup lang="ts">
 const props = defineProps<{
   src?: string | null
   alt: string
@@ -21,7 +21,7 @@ watch(
     decoding="async"
     @error="failed = true"
   />
-  <div v-else class="image-placeholder" role="img" :aria-label="alt">
-    <AppIcon name="leaf" :size="48" /><span>Gėrybės jūsų stalui</span>
+  <div v-else class="flex h-full min-h-[180px] flex-col items-center justify-center gap-3 bg-[#ecefe5] text-[#8a997c] [&>span]:font-serif [&>span]:text-base" role="img" :aria-label="alt">
+    <AppIcon name="leaf" :size="48" /><span>GÄ—rybÄ—s jÅ«sÅ³ stalui</span>
   </div>
 </template>
