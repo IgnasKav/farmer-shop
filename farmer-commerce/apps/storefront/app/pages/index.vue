@@ -226,24 +226,7 @@ const wrap =
     <section
       id="katalogas"
       :class="[wrap, 'scroll-mt-5 pb-[60px] pt-14 max-[680px]:pt-[35px]']"
-      aria-labelledby="catalog-title"
     >
-      <div
-        class="mb-[35px] flex items-center justify-between gap-[25px] max-[680px]:mb-[22px]"
-      >
-        <div>
-          <h2
-            id="catalog-title"
-            class="text-[32px] font-semibold tracking-[-1.2px] max-[680px]:text-[28px]"
-          >
-            Krautuvės gėrybės<span
-              v-if="data"
-              class="ml-3 inline-block rounded-[20px] bg-[#e8ecdf] px-2.5 py-[5px] align-middle font-sans text-[11px] font-medium tracking-normal"
-              >{{ data.total }}</span
-            >
-          </h2>
-        </div>
-      </div>
       <div
         class="grid grid-cols-[215px_1fr] gap-[38px] min-[1450px]:grid-cols-[220px_1fr] max-[1000px]:grid-cols-[180px_1fr] max-[1000px]:gap-[25px] max-[680px]:grid-cols-1 max-[680px]:gap-0"
       >
