@@ -61,7 +61,6 @@ useSeoMeta({ title: "Ūkio krautuvė — atraskite gerą maistą" });
   <main id="main">
     <section class="hero wrap" aria-labelledby="hero-heading">
       <div class="hero-copy">
-        <p class="eyebrow"><span /> PAPRASTA. TIKRA. SKANU.</p>
         <h1 id="hero-heading">Geras maistas.<br /><em>Arčiau jūsų.</em></h1>
         <p class="hero-description">
           Nuo daržo gėrybių iki kasdienio duonos kąsnio.<br />Atraskite skonius,
@@ -70,9 +69,6 @@ useSeoMeta({ title: "Ūkio krautuvė — atraskite gerą maistą" });
         <a class="button primary" href="#katalogas"
           >Atrasti produktus <AppIcon name="arrow"
         /></a>
-        <div class="hero-note">
-          <span class="note-line" /><span>Maistas, kuriuo gera dalintis.</span>
-        </div>
       </div>
       <div class="hero-visual">
         <ProductImage
@@ -91,11 +87,6 @@ useSeoMeta({ title: "Ūkio krautuvė — atraskite gerą maistą" });
         </div>
       </div>
     </section>
-    <div class="values wrap">
-      <span><AppIcon name="leaf" /> Gėrybės kasdieniam stalui</span
-      ><span><AppIcon name="sun" /> Skonių įvairovė</span
-      ><span><AppIcon name="check" /> Aiškios kainos ir kiekiai</span>
-    </div>
     <section
       id="katalogas"
       class="catalog wrap"
@@ -103,7 +94,6 @@ useSeoMeta({ title: "Ūkio krautuvė — atraskite gerą maistą" });
     >
       <div class="catalog-heading">
         <div>
-          <p class="eyebrow">IŠSIRINKITE SAVO MĖGSTAMIAUSIUS</p>
           <h2 id="catalog-title">
             Krautuvės gėrybės<span v-if="data" class="count-pill">{{
               data.total
