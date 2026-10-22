@@ -5,20 +5,20 @@ import { medusa } from "../../utils/medusa"
 const PROVIDER_ID = "pp_system_default"
 
 export default defineEventHandler(async (event) => {
-  setHeader(event, "Cache-Control", "no-store")
-  const cartId = cartIdFrom(event)
-  if (!cartId)
-    throw createError({ statusCode: 409, statusMessage: "Krepšelis tuščias" })
-  const { sdk } = medusa()
-  try {
-    const { cart } = await sdk.store.cart.retrieve(cartId, {
-      fields: "id,*payment_collection"
-    })
-    await sdk.store.payment.initiatePaymentSession(cart, {
-      provider_id: PROVIDER_ID
-    })
-    return { ok: true }
-  } catch (error) {
-    return rejectLine(error)
-  }
+    setHeader(event, "Cache-Control", "no-store")
+    const cartId = cartIdFrom(event)
+    if (!cartId)
+        throw createError({ statusCode: 409, statusMessage: "Krepšelis tuščias" })
+    const { sdk } = medusa()
+    try {
+        const { cart } = await sdk.store.cart.retrieve(cartId, {
+            fields: "id,*payment_collection"
+        })
+        await sdk.store.payment.initiatePaymentSession(cart, {
+            provider_id: PROVIDER_ID
+        })
+        return { ok: true }
+    } catch (error) {
+        return rejectLine(error)
+    }
 })

@@ -105,7 +105,8 @@ async function submit() {
             Kontaktai
           </h2>
           <div class="grid grid-cols-2 gap-4 max-[680px]:grid-cols-1">
-            <label class="col-span-2 flex flex-col gap-1.5 text-xs max-[680px]:col-span-1"
+            <label
+              class="col-span-2 flex flex-col gap-1.5 text-xs max-[680px]:col-span-1"
               >El. paštas
               <input
                 id="field-email"
@@ -170,7 +171,8 @@ async function submit() {
                 >{{ errors.lastName }}</span
               >
             </label>
-            <label class="col-span-2 flex flex-col gap-1.5 text-xs max-[680px]:col-span-1"
+            <label
+              class="col-span-2 flex flex-col gap-1.5 text-xs max-[680px]:col-span-1"
               >Telefonas
               <input
                 id="field-phone"

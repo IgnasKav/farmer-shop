@@ -68,9 +68,7 @@ useSeoMeta({ title: "Užsakymas pateiktas — Ūkio krautuvė", robots: "noindex
           }}<template v-if="pickup.city">, {{ pickup.city }}</template>
         </p>
         <p v-if="pickup.hours" class="mt-1">{{ pickup.hours }}</p>
-        <p class="mt-2">
-          Mokėjimas dar nepaimtas — atsiskaitysite atsiimdami.
-        </p>
+        <p class="mt-2">Mokėjimas dar nepaimtas — atsiskaitysite atsiimdami.</p>
       </div>
 
       <NuxtLink
