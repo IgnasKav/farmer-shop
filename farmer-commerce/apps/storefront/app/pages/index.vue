@@ -1,13 +1,15 @@
 <script setup lang="ts">
-import type { Catalog } from "../../shared/types";
+import type { Catalog, Product } from "../../shared/types";
 import {
   ArrowRightIcon,
   LeafIcon,
   SearchIcon,
+  ShoppingCartIcon,
   SlidersHorizontalIcon,
   XIcon,
 } from "@lucide/vue";
 
+const config = useRuntimeConfig();
 const route = useRoute();
 const router = useRouter();
 const query = computed(() => ({
@@ -61,6 +63,26 @@ function update(changes: Record<string, string | undefined>) {
   mobileFilters.value = false;
   return router.push(destination({ page: undefined, ...changes }));
 }
+const { data: featured } = await useFetch<Product>(
+  () =>
+    `/api/products/${encodeURIComponent(config.public.featuredProductHandle)}`,
+);
+const { add, pending: cartPending, isOpen: cartOpen } = useCart();
+const featuredVariant = computed(() => featured.value?.variants[0]);
+const canBuyFeatured = computed(
+  () =>
+    !!featuredVariant.value?.available && featuredVariant.value.amount != null,
+);
+const justAdded = ref(false);
+async function addFeaturedToCart() {
+  if (!featuredVariant.value || !canBuyFeatured.value) return;
+  justAdded.value = await add(featuredVariant.value.id, 1);
+  if (justAdded.value) cartOpen.value = true;
+}
+const money = (amount: number) =>
+  new Intl.NumberFormat("lt-LT", { style: "currency", currency: "EUR" }).format(
+    amount,
+  );
 const heroImage =
   "https://pilnaspuodas.lt/wp-content/uploads/2024/03/morkos-nerac-su-zememis.jpg";
 useSeoMeta({ title: "Ūkio krautuvė — atraskite gerą maistą" });
@@ -83,6 +105,75 @@ const wrap =
       ]"
       aria-labelledby="hero-heading"
     >
+      <template v-if="featured">
+        <div
+          class="relative min-h-[380px] overflow-hidden rounded-[6px_60px_6px_6px] bg-[#eeeee6] max-[1000px]:min-h-[370px] max-[680px]:min-h-[250px] max-[680px]:rounded-[5px_50px_5px_5px] [&>img]:absolute [&>img]:size-full [&>img]:object-contain [&>img]:p-8 max-[680px]:[&>img]:p-5"
+        >
+          <ProductImage
+            :src="featured.images[0] || featured.thumbnail"
+            :alt="featured.title"
+            eager
+          />
+          <div
+            class="absolute right-6 top-6 z-[1] flex size-[99px] rotate-[10deg] flex-col items-center justify-center gap-[5px] rounded-full bg-[#f5f1df] text-center text-[11px] max-[680px]:right-[18px] max-[680px]:top-4 max-[680px]:size-20"
+          >
+            <LeafIcon :size="26" :stroke-width="1.6" /><span
+              >Įkvėpta<br /><strong class="font-serif text-xl font-normal"
+                >gamtos</strong
+              ></span
+            >
+          </div>
+        </div>
+        <div class="pt-[34px] max-[680px]:pt-[15px]">
+          <span class="text-[9px] tracking-[2px] text-muted"
+            >SAVAITĖS PASIŪLYMAS</span
+          >
+          <h1
+            id="hero-heading"
+            class="mb-5 mt-3 text-[clamp(32px,3.4vw,48px)] font-semibold leading-[1.15] tracking-[-2px] max-[1000px]:text-[38px] max-[680px]:my-4"
+          >
+            <NuxtLink
+              class="hover:underline"
+              :to="`/produktai/${featured.handle}`"
+              >{{ featured.title }}</NuxtLink
+            >
+          </h1>
+          <p
+            class="mb-5 line-clamp-3 text-sm leading-[1.9] text-muted max-[680px]:text-[13px]"
+          >
+            {{ featured.description }}
+          </p>
+          <p v-if="featured.amount != null" class="mb-[27px] text-xl font-semibold">
+            {{ money(featured.amount) }}
+            <span v-if="featured.unit" class="text-sm font-normal text-muted"
+              >/ {{ featured.unit }}</span
+            >
+          </p>
+          <div class="flex items-center gap-4 max-[680px]:flex-col max-[680px]:items-stretch">
+            <button
+              type="button"
+              :class="primaryButton"
+              :disabled="cartPending || !canBuyFeatured"
+              :aria-label="`Į krepšelį: ${featured.title}`"
+              class="disabled:cursor-not-allowed disabled:opacity-50"
+              @click="addFeaturedToCart"
+            >
+              <ShoppingCartIcon :size="18" :stroke-width="1.6" /> Į krepšelį
+            </button>
+            <NuxtLink
+              class="inline-flex min-h-11 items-center justify-center gap-2 rounded-[5px] border border-line px-[21px] text-xs font-semibold hover:bg-pale"
+              :to="`/produktai/${featured.handle}`"
+              >Plačiau <ArrowRightIcon :size="16" :stroke-width="1.6"
+            /></NuxtLink>
+          </div>
+          <p class="mt-3 min-h-4 text-xs" aria-live="polite">
+            <span v-if="justAdded" class="text-[#536b42]"
+              >Įdėta į krepšelį.</span
+            >
+          </p>
+        </div>
+      </template>
+      <template v-else>
       <div class="pt-[34px] max-[680px]:pt-[15px]">
         <h1
           id="hero-heading"
@@ -130,6 +221,7 @@ const wrap =
           >
         </div>
       </div>
+      </template>
     </section>
     <section
       id="katalogas"

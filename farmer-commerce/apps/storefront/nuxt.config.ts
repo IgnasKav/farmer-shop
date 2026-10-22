@@ -24,6 +24,9 @@ export default defineNuxtConfig({
         medusaRegionId: local.region_id || "",
         public: {
             storeName: "Ūkio krautuvė",
+            // Product shown in the home-page hero. Override with
+            // NUXT_PUBLIC_FEATURED_PRODUCT_HANDLE.
+            featuredProductHandle: "pilnas-puodas-16552",
             // Override with NUXT_PUBLIC_PICKUP_ADDRESS, NUXT_PUBLIC_PICKUP_CITY, etc.
             pickup: {
                 name: "Atsiėmimas ūkyje",
