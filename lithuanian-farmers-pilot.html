@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Lithuanian farmers &mdash; pilot plan</title><style>
+      :root {
+        color-scheme: light;
+        --background: #f5f3ed;
+        --ink: #202b27;
+        --muted: #657068;
+        --line: #dce0d6;
+        --green: #315f48;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: var(--background);
+        color: var(--ink);
+        font: 16px/1.6 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      main, footer {
+        max-width: 960px;
+        margin: auto;
+        padding: 0 32px;
+      }
+
+      header {
+        padding: 56px 0 32px;
+      }
+
+      .eyebrow {
+        color: var(--green);
+        font-size: 12px;
+        font-weight: 750;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        margin: 12px 0 18px;
+        font-size: clamp(34px, 5vw, 52px);
+        line-height: 1.1;
+        letter-spacing: -1.8px;
+      }
+
+      h2 {
+        margin: 0 0 18px;
+        font-size: 24px;
+        line-height: 1.3;
+        letter-spacing: -0.5px;
+      }
+
+      h3 {
+        margin: 0 0 10px;
+        font-size: 16px;
+      }
+
+      p {
+        margin: 0 0 16px;
+      }
+
+      .lead {
+        max-width: 760px;
+        font-size: 18px;
+      }
+
+      .facts {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 24px;
+        margin-top: 24px;
+        color: var(--green);
+        font-size: 14px;
+        font-weight: 650;
+      }
+
+      section {
+        padding: 30px 0;
+        border-top: 1px solid var(--line);
+      }
+
+      .columns {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+      }
+
+      ul {
+        margin: 0;
+        padding-left: 20px;
+      }
+
+      li {
+        margin: 0 0 8px;
+      }
+
+      .note {
+        margin: 20px 0 0;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .architecture {
+        margin-top: 22px;
+        padding: 18px 20px;
+        border-radius: 10px;
+        background: #e8ecdf;
+      }
+
+      .architecture p {
+        margin: 0;
+      }
+
+      .table-wrap {
+        overflow-x: auto;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: left;
+        font-size: 15px;
+      }
+
+      th, td {
+        padding: 14px 14px 14px 0;
+        border-bottom: 1px solid var(--line);
+        vertical-align: top;
+      }
+
+      th {
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 650;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      th:first-child, td:first-child {
+        width: 100px;
+        white-space: nowrap;
+      }
+
+      th:nth-child(2), td:nth-child(2) {
+        width: 155px;
+      }
+
+      footer {
+        padding-top: 20px;
+        padding-bottom: 28px;
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      @media (max-width: 620px) {
+        main, footer {
+          padding-right: 20px;
+          padding-left: 20px;
+        }
+
+        header {
+          padding-top: 32px;
+        }
+
+        .columns {
+          grid-template-columns: 1fr;
+          gap: 24px;
+        }
+
+        th, td {
+          padding-right: 10px;
+          font-size: 13px;
+        }
+
+        th:first-child, td:first-child {
+          width: 60px;
+        }
+
+        th:nth-child(2), td:nth-child(2) {
+          width: 92px;
+        }
+      }
+
+      @media print {
+        body {
+          background: white;
+          font-size: 11px;
+          line-height: 1.45;
+        }
+
+        main, footer {
+          max-width: none;
+          padding-right: 0;
+          padding-left: 0;
+        }
+
+        header {
+          padding: 0 0 16px;
+        }
+
+        h1 {
+          font-size: 30px;
+        }
+
+        h2 {
+          font-size: 18px;
+        }
+
+        .lead {
+          font-size: 13px;
+        }
+
+        .facts, .note, table, th, td {
+          font-size: 11px;
+        }
+
+        section {
+          padding: 16px 0;
+          break-inside: avoid;
+        }
+
+        th, td {
+          padding-top: 8px;
+          padding-bottom: 8px;
+        }
+
+        .architecture {
+          padding: 12px;
+        }
+      }
+    a { color: var(--green); text-underline-offset: 3px; } th:first-child, td:first-child { width: 24%; white-space: normal; } th:nth-child(2), td:nth-child(2) { width: 27%; } ol { padding-left: 22px; }</style></head><body><main>
+<header>
+<div class="eyebrow">Detailed pilot plan &middot; 21 October 2026</div>
+<p><a href="hosted-commerce-platform.html">&larr; Hosted commerce platform plan</a></p>
+<h1>Local farms.<br>Orders that fit the delivery week.</h1>
+<p class="lead">A simple ordering and delivery-planning system for Lithuanian farmers selling directly to households. Publish what you have, say where and when customers can receive it, and get an organised list of orders to fulfil.</p>
+<div class="facts"><span>Lithuania &middot; Lithuanian storefront</span><span>3&ndash;5 farmers</span><span>Six live weeks</span><span>Vilnius + Kaunas</span></div>
+</header>
+<section aria-labelledby="audience">
+<h2 id="audience">Who the pilot serves</h2>
+<p>Recruit farmers already taking orders through messages or phone calls and running regular deliveries. Use their existing customers to test whether structured ordering reduces coordination work. Include at least one farmer already using a chilled delivery provider.</p>
+<p>Begin with Vilnius home delivery and a small number of Kaunas collection stops. Each farmer has a separate store and basket. Agree the pilot price and the paid continuation price during recruitment.</p>
+</section>
+<section aria-labelledby="fulfilment">
+<h2 id="fulfilment">Four ways to receive an order</h2>
+<div class="table-wrap"><table><thead><tr><th scope="col">Method</th><th scope="col">Example</th><th scope="col">Farmer settings</th></tr></thead><tbody>
+<tr><td>Home delivery</td><td>Vilnius every Friday, free</td><td>Service boundary, dates, delivery window, order cutoff, fee, optional minimum basket, and capacity.</td></tr>
+<tr><td>Scheduled stop</td><td>Kaunas, &#352;arkuvos g. 30, on a selected Friday, 18:00&ndash;18:30</td><td>Exact location, date, collection window, instructions, and capacity. Support one-off stops and recurring stops.</td></tr>
+<tr><td>Farm collection</td><td>Saturday morning at the farm</td><td>Address, collection slots, preparation time, and instructions.</td></tr>
+<tr><td>Provider delivery</td><td>Eligible food sent with DPD Fresh</td><td>Dispatch days, service coverage, fees, eligible products, and tracking reference.</td></tr>
+</tbody></table></div>
+<div class="architecture"><p><strong>Example:</strong> Vilnius delivery every Friday, 16:00&ndash;20:00, free; orders close Wednesday at 20:00. Checkout displays the actual next available date. After the cutoff, the next eligible date is offered.</p></div>
+<p class="note">Times use Europe/Vilnius. These examples describe proposed configurations, not confirmed routes or provider service commitments.</p>
+</section>
+<section aria-labelledby="rules">
+<h2 id="rules">Scheduling rules that make it reliable</h2>
+<ul>
+<li>Give each delivery or collection occurrence its own capacity and status. A farmer can skip a holiday, close a full date, or change one week's window.</li>
+<li>Validate customer addresses against the configured delivery area; distinguish city coverage from surrounding districts.</li>
+<li>Reserve stock across all delivery methods so the same produce cannot be sold twice. Availability may be tied to a harvest or fulfilment date.</li>
+<li>Preserve the date, location, window, and fee agreed on an existing order. Explicit changes require customer notification.</li>
+<li>Offer only methods compatible with every product in the basket. Chilled, frozen, and ambient products do not automatically share delivery options.</li>
+<li>Group orders by date, method, and stop; provide product totals for harvesting and packing.</li>
+</ul>
+</section>
+<section aria-labelledby="use-cases">
+<h2 id="use-cases">Farmer use cases and scope</h2>
+<div class="table-wrap"><table><thead><tr><th scope="col">Use case</th><th scope="col">Example</th><th scope="col">Pilot treatment</th></tr></thead><tbody>
+<tr><td>Harvest preorders</td><td>Reserve potatoes for next week</td><td>Offer fixed packs against a future available fulfilment date.</td></tr>
+<tr><td>Limited weekly stock</td><td>40 vegetable boxes</td><td>Share stock across home delivery and collection.</td></tr>
+<tr><td>Seasonal boxes</td><td>This week's mixed vegetables</td><td>Sell a fixed-price box with its contents described for that week; manually manage box stock.</td></tr>
+<tr><td>Market collection</td><td>Preorder for a market stall</td><td>Use a scheduled collection location with clear instructions.</td></tr>
+<tr><td>Several stops</td><td>Two Kaunas stops on one trip</td><td>Separate windows and order lists for each stop; manual route planning.</td></tr>
+<tr><td>Harvest shortage</td><td>Replace or remove an unavailable item</td><td>Record customer agreement, adjusted totals, and payment or refund status.</td></tr>
+<tr><td>Repeat purchases</td><td>Buy last week's basket again</td><td>Validate demand during the pilot; convenient reorder is a follow-up. Subscriptions and automatic billing are deferred.</td></tr>
+<tr><td>Variable weight</td><td>Final price based on packed weight</td><td>Defer estimated-to-final price settlement. Start with fixed packs such as 1 kg carrots or 5 kg potatoes.</td></tr>
+</tbody></table></div>
+</section>
+<section aria-labelledby="providers">
+<h2 id="providers">Shipping providers to validate</h2>
+<p><strong>DPD Fresh is the first candidate.</strong> Its Lithuanian service explicitly collects from farmers and transports food requiring 0&ndash;4&deg;C. This confirms its relevance, but does not establish that most Lithuanian farmers use it. <a href="https://www.dpd.com/lt/en/dpd-fresh/">Source: DPD Fresh</a>.</p>
+<p><strong>NNL is an alternative to investigate.</strong> It advertises temperature-controlled logistics, individual shipments through full loads, and Baltic coverage. Confirm household delivery arrangements, small-farm pricing, collection minimums, and integration options. <a href="https://www.nnl.lt/paslaugos/transporto-sprendimai/">Source: NNL transport services</a>.</p>
+<p><strong>ShareFreeze could complement collection stops.</strong> It offers temperature-controlled food lockers. Confirm relevant locations, compartment availability, pricing, and responsibility for transporting orders to the lockers; do not assume a transport service is included. <a href="https://www.sharefreeze.lt/">Source: ShareFreeze</a>.</p>
+<div class="architecture"><p><strong>Pilot implementation:</strong> book shipments manually and record tracking references. Before committing to integration, validate farm collection coverage, dispatch and delivery schedules, accepted products, temperature requirements, packaging, minimum volumes, fees, and API access.</p></div>
+<p class="note">Public provider information checked on 21 October 2026. No rates, contract terms, or API capabilities have been confirmed directly with providers.</p>
+</section>
+<section aria-labelledby="product">
+<h2 id="product">Minimum product</h2>
+<div class="columns"><div><h3>Customer experience</h3><ul>
+<li>Lithuanian, mobile-friendly farm pages with products, prices, units, and availability.</li>
+<li>One farmer per basket and guest checkout.</li>
+<li>Eligible delivery or collection dates, transparent fees, and order deadlines.</li>
+<li>A simple payment arrangement per farmer using the selected pilot payment provider.</li>
+<li>Order confirmations and delivery or collection reminders.</li>
+</ul></div><div><h3>Farmer operations</h3><ul>
+<li>Products, fixed packs, stock, and future availability.</li>
+<li>Delivery areas, stops, farm slots, and provider dispatch schedules.</li>
+<li>Cutoffs, capacity, date exceptions, and fees.</li>
+<li>Packing totals and orders grouped by date, method, and stop.</li>
+<li>Payment status, cancellations, shortages, agreed substitutions, and refund status.</li>
+</ul></div></div>
+<p class="note"><strong>Later phases:</strong> shared baskets across farms, automated route optimisation, subscriptions, variable-weight settlement, multiple courier integrations, and broader geographic expansion.</p>
+</section>
+<section aria-labelledby="execution">
+<h2 id="execution">Run the pilot</h2>
+<ol>
+<li><strong>Recruit and observe:</strong> document one real delivery week for each of 3&ndash;5 farmers: products, stock, order deadlines, destinations, payment habits, and exceptions. Record current time spent organising orders.</li>
+<li><strong>Configure and verify:</strong> turn those actual schedules into store settings and acceptance scenarios. Test a full order-to-collection or delivery cycle, including cutoffs, capacity, shortages, and changes.</li>
+<li><strong>Operate for six live weeks:</strong> help onboard existing customers, resolve purchase blockers, and review fulfilment and support needs weekly.</li>
+<li><strong>Decide on continuation:</strong> compare results with the baseline, confirm willingness to pay at the stated price, and prioritise changes supported by observed use.</li>
+</ol>
+<p>The parent plan allocates weeks 1&ndash;14 to discovery, implementation, and preparation, then weeks 15&ndash;20 to live operation. This is a working estimate for two full-time developers, to be reassessed after discovery.</p>
+</section>
+<section aria-labelledby="success">
+<h2 id="success">What would make the pilot successful?</h2>
+<p><strong>Hypothesis:</strong> farmers move repeat ordering into the system because it reduces coordination work, and customers can successfully order against real delivery schedules.</p>
+<ul>
+<li>At least three farmers fulfil orders through the system for four consecutive weeks.</li>
+<li>At least 100 completed orders across the pilot.</li>
+<li>At least 30% less order-administration time compared with the initial baseline; track time per order as well as weekly totals to account for changing volume.</li>
+<li>At least 90% of orders require no manual clarification about delivery or collection.</li>
+<li>At least three farmers agree to continue at a stated paid price.</li>
+</ul>
+<p class="note">These are proposed decision targets, not forecasts. Also track hosting costs, support time per farm, fulfilment failures, and repeat purchases to understand whether the service is economical to operate.</p>
+</section>
+</main><footer>Companion to the hosted commerce platform plan &middot; Updated 21 October 2026</footer></body></html>

@@ -1,0 +1,29 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "globalPassThroughEnv": ["NUXT_*", "NITRO_PORT"],
+  "tasks": {
+    "build": {
+      "env": ["NUXT_*"],
+      "inputs": ["$TURBO_DEFAULT$", ".medusa-storefront.json", ".env"],
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**", ".next/**", ".output/**"]
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true
+    },
+    "start": {
+      "dependsOn": ["^build"]
+    },
+    "lint": {
+      "outputs": []
+    },
+    "test": {
+      "outputs": []
+    },
+    "seed": {
+      "cache": false,
+      "outputs": []
+    }
+  }
+}

@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hosted commerce — lean MVP plan</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --background: #f5f3ed;
+        --ink: #202b27;
+        --muted: #657068;
+        --line: #dce0d6;
+        --green: #315f48;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: var(--background);
+        color: var(--ink);
+        font: 16px/1.6 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      main, footer {
+        max-width: 960px;
+        margin: auto;
+        padding: 0 32px;
+      }
+
+      header {
+        padding: 56px 0 32px;
+      }
+
+      .eyebrow {
+        color: var(--green);
+        font-size: 12px;
+        font-weight: 750;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        margin: 12px 0 18px;
+        font-size: clamp(34px, 5vw, 52px);
+        line-height: 1.1;
+        letter-spacing: -1.8px;
+      }
+
+      h2 {
+        margin: 0 0 18px;
+        font-size: 24px;
+        line-height: 1.3;
+        letter-spacing: -0.5px;
+      }
+
+      h3 {
+        margin: 0 0 10px;
+        font-size: 16px;
+      }
+
+      p {
+        margin: 0 0 16px;
+      }
+
+      .lead {
+        max-width: 760px;
+        font-size: 18px;
+      }
+
+      .facts {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 24px;
+        margin-top: 24px;
+        color: var(--green);
+        font-size: 14px;
+        font-weight: 650;
+      }
+
+      section {
+        padding: 30px 0;
+        border-top: 1px solid var(--line);
+      }
+
+      .columns {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+      }
+
+      ul {
+        margin: 0;
+        padding-left: 20px;
+      }
+
+      li {
+        margin: 0 0 8px;
+      }
+
+      .note {
+        margin: 20px 0 0;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .architecture {
+        margin-top: 22px;
+        padding: 18px 20px;
+        border-radius: 10px;
+        background: #e8ecdf;
+      }
+
+      .architecture p {
+        margin: 0;
+      }
+
+      .table-wrap {
+        overflow-x: auto;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: left;
+        font-size: 15px;
+      }
+
+      th, td {
+        padding: 14px 14px 14px 0;
+        border-bottom: 1px solid var(--line);
+        vertical-align: top;
+      }
+
+      th {
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 650;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      th:first-child, td:first-child {
+        width: 100px;
+        white-space: nowrap;
+      }
+
+      th:nth-child(2), td:nth-child(2) {
+        width: 155px;
+      }
+
+      footer {
+        padding-top: 20px;
+        padding-bottom: 28px;
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      @media (max-width: 620px) {
+        main, footer {
+          padding-right: 20px;
+          padding-left: 20px;
+        }
+
+        header {
+          padding-top: 32px;
+        }
+
+        .columns {
+          grid-template-columns: 1fr;
+          gap: 24px;
+        }
+
+        th, td {
+          padding-right: 10px;
+          font-size: 13px;
+        }
+
+        th:first-child, td:first-child {
+          width: 60px;
+        }
+
+        th:nth-child(2), td:nth-child(2) {
+          width: 92px;
+        }
+      }
+
+      @media print {
+        body {
+          background: white;
+          font-size: 11px;
+          line-height: 1.45;
+        }
+
+        main, footer {
+          max-width: none;
+          padding-right: 0;
+          padding-left: 0;
+        }
+
+        header {
+          padding: 0 0 16px;
+        }
+
+        h1 {
+          font-size: 30px;
+        }
+
+        h2 {
+          font-size: 18px;
+        }
+
+        .lead {
+          font-size: 13px;
+        }
+
+        .facts, .note, table, th, td {
+          font-size: 11px;
+        }
+
+        section {
+          padding: 16px 0;
+          break-inside: avoid;
+        }
+
+        th, td {
+          padding-top: 8px;
+          padding-bottom: 8px;
+        }
+
+        .architecture {
+          padding: 12px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <div class="eyebrow">MVP plan · Updated 21 October 2026</div>
+        <h1>Hosted commerce.<br>Start with a paid pilot.</h1>
+        <p class="lead">A Medusa-based platform with a Vue + Nuxt storefront for Lithuanian farmers selling directly to households. Farmers publish their produce, define delivery and collection schedules, and manage orders through a mobile-friendly store. Merchants pay monthly for their store, hosting, and maintenance.</p>
+        <div class="facts" aria-label="Planning assumptions">
+          <span>2 developers</span>
+          <span>20-week working estimate</span>
+          <span>Lithuanian farmers</span>
+          <span>3–5 pilot stores</span>
+        </div>
+      </header>
+
+      <section aria-labelledby="pilot">
+        <h2 id="pilot">Pilot: farm orders built around real delivery schedules</h2>
+        <p>Recruit 3–5 farmers already taking direct orders through messages or phone calls. Start with Vilnius home deliveries and a few scheduled collection stops in Kaunas, including at least one farmer already using a chilled delivery provider.</p>
+        <p><a href="lithuanian-farmers-pilot.html">Read the detailed farmer pilot plan →</a> for delivery rules, farmer use cases, provider research, scope, and success criteria.</p>
+        <p>Run six live weeks to test whether farmers spend less time organising orders and whether customers can order without delivery clarification. Agree the pilot price and continuation price during recruitment.</p>
+      </section>
+
+      <section aria-labelledby="scope">
+        <h2 id="scope">Build only what the pilot needs</h2>
+        <div class="columns">
+          <div>
+            <h3>Core product</h3>
+            <ul>
+              <li>Lithuanian mobile storefront: products, fixed pack sizes, availability, cart, and guest checkout; one farmer per basket.</li>
+              <li>Medusa admin for products, inventory, orders, and refunds, extended with fulfilment schedules, packing totals, and orders grouped by date and stop.</li>
+              <li>Recurring home delivery, scheduled collection stops, farm collection, and provider delivery with cutoffs, capacity, fees, and date exceptions.</li>
+              <li>One payment provider with payment status, tax setup, order confirmations, and delivery or collection reminders.</li>
+              <li>Logo, colors, homepage content, and a custom domain per store.</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Keep pilot operations manual</h3>
+            <ul>
+              <li>Set up each store and domain with a repeatable checklist.</li>
+              <li>Configure branding and import the initial catalog for merchants.</li>
+              <li>Collect the monthly platform fee through an existing billing service.</li>
+              <li>Handle onboarding and support directly with pilot merchants.</li>
+              <li>Book provider shipments manually and record tracking references; validate DPD Fresh terms before any integration.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="architecture">
+          <p><strong>Architecture:</strong> one shared codebase, with a separate Medusa deployment and database per merchant. Reuse the same Vue + Nuxt storefront template with store-specific settings.</p>
+        </div>
+        <p class="note"><strong>Defer:</strong> a page builder, full custom merchant dashboard, automated provisioning, platform control system, plugin marketplace, native apps, shared baskets across farms, subscriptions, variable-weight settlement, automatic route optimisation, and multiple courier integrations. Focused farmer workflow extensions remain in scope.</p>
+      </section>
+
+      <section aria-labelledby="delivery">
+        <h2 id="delivery">Four implementation phases</h2>
+        <div class="table-wrap">
+          <table aria-label="Delivery plan by week, focus, and completion criteria">
+            <thead>
+              <tr>
+                <th scope="col">Weeks</th>
+                <th scope="col">Focus</th>
+                <th scope="col">Done when</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1–3</td>
+                <td>Define the pilot</td>
+                <td>Niche and country are defined: Lithuanian farmers. Recruit 3–5 farms, document one real delivery week per farm, measure current admin time, agree pricing and payment provider, validate carrier terms, and approve the storefront workflow.</td>
+              </tr>
+              <tr>
+                <td>4–9</td>
+                <td>Build commerce</td>
+                <td>A shopper can browse, select an eligible delivery or collection date, pay, and create a correct order in staging. Cutoffs, shared stock, capacity, and schedule exceptions work. Farmers can produce packing and stop lists.</td>
+              </tr>
+              <tr>
+                <td>10–14</td>
+                <td>Prepare operations</td>
+                <td>Deploy stores, configure domains and branding, connect platform billing, and pass the launch checks below.</td>
+              </tr>
+              <tr>
+                <td>15–20</td>
+                <td>Run the paid pilot</td>
+                <td>Run six live weeks with 3–5 farms. Target 100 completed orders, three farms active for four consecutive weeks, 30% less order-admin time, 90% of orders without fulfilment clarification, and three farmers agreeing to continue at a stated paid price. Track hosting and support costs.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note">Working estimate assumes two experienced developers full time: 14 weeks of preparation and six live pilot weeks, replacing the earlier 16-week outline. Scheduling adds implementation work; reassess after farm interviews and the first working checkout. Success targets are hypotheses, not forecasts.</p>
+      </section>
+
+      <section aria-labelledby="launch">
+        <h2 id="launch">Before taking live orders</h2>
+        <ul>
+          <li>Verify payments, webhook retries, inventory, shipping, taxes, order emails, and refunds.</li>
+          <li>Verify address eligibility, order cutoffs in Europe/Vilnius time, capacity limits, stock shared across delivery methods, skipped dates, and notifications for schedule changes.</li>
+          <li>Confirm product eligibility for each delivery method and carrier terms. Test shortages, agreed substitutions, cancellations, and refund status.</li>
+          <li>Check merchant access isolation; test a backup restore and deployment rollback.</li>
+          <li>Test browsing and checkout on real phones, including accessibility and loading speed.</li>
+          <li>Confirm the platform fee, failed-payment and cancellation handling, and data export process.</li>
+        </ul>
+      </section>
+    </main>
+    <footer>Expand scope after the paid pilot shows what merchants need and what it costs to serve them.</footer>
+  </body>
+</html>
