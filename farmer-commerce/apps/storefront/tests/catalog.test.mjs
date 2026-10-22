@@ -39,3 +39,11 @@ test("rejects unsupported sorts and malformed pages", () => {
   }
   assert.equal(catalogState({}).sort, "price-asc")
 })
+
+test("search matches prefixes and tolerates typos in every query", () => {
+  const { queries } = searchQueries(catalogState({ q: "jau" }))
+  for (const query of queries) {
+    assert.equal(query.search_options.match_strategy, "last")
+    assert.equal(query.search_options.typo_tolerance, true)
+  }
+})

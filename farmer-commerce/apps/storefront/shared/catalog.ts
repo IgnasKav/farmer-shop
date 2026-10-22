@@ -50,7 +50,8 @@ export function searchQueries(state: ReturnType<typeof catalogState>) {
         search_options: {
           count: "exact",
           attributes_to_search_on: ["title"],
-          typo_tolerance: false
+          match_strategy: "last",
+          typo_tolerance: true
         }
       },
       {
@@ -62,7 +63,8 @@ export function searchQueries(state: ReturnType<typeof catalogState>) {
           count: "exact",
           facets: [{ field: "category", limit: 200, sort: "alpha" }],
           attributes_to_search_on: ["title"],
-          typo_tolerance: false
+          match_strategy: "last",
+          typo_tolerance: true
         }
       }
     ]
