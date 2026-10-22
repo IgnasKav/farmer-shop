@@ -207,13 +207,13 @@ const stepper =
                 money(cart.total)
               }}</strong>
             </div>
-            <button
-              type="button"
-              class="mt-4 min-h-11 w-full rounded-[5px] bg-green px-5 py-3 text-xs font-semibold text-white disabled:cursor-not-allowed disabled:opacity-50"
-              disabled
+            <NuxtLink
+              to="/apmokejimas"
+              class="mt-4 inline-flex min-h-11 w-full items-center justify-center rounded-[5px] bg-green px-5 py-3 text-xs font-semibold text-white hover:bg-[#29442d]"
+              @click="close()"
             >
-              Apmokėjimas — netrukus
-            </button>
+              Apmokėjimas
+            </NuxtLink>
           </template>
         </div>
       </div>

@@ -42,3 +42,31 @@ export interface Cart {
   itemCount: number
   total: number
 }
+
+export interface ShippingOption {
+  id: string
+  name: string
+  description: string
+  amount: number
+}
+export interface CheckoutState {
+  cart: Cart
+  email: string
+  firstName: string
+  lastName: string
+  phone: string
+}
+export interface Order {
+  id: string
+  displayId: number | null
+  email: string
+  total: number
+  items: CartItem[]
+}
+export interface PickupInfo {
+  name: string
+  address: string
+  city: string
+  postalCode: string
+  hours: string
+}

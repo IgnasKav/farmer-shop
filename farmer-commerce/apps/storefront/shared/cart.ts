@@ -41,7 +41,7 @@ export function parseAddItem(body: unknown) {
     }
 }
 
-interface RawItem {
+export interface RawItem {
     id: string
     variant_id?: string | null
     product_handle?: string | null
@@ -67,7 +67,17 @@ const num = (value: unknown) => {
 
 export function mapCart(cart: RawCart | null | undefined): Cart {
     if (!cart) return emptyCart()
-    const items: CartItem[] = (cart.items || []).flatMap((i) =>
+    const items = mapItems(cart.items)
+    return {
+        id: cart.id,
+        items,
+        itemCount: items.reduce((sum, i) => sum + i.quantity, 0),
+        total: num(cart.total) || num(cart.item_subtotal)
+    }
+}
+
+export function mapItems(raw: (RawItem | null)[] | null | undefined): CartItem[] {
+    return (raw || []).flatMap((i) =>
         i
             ? [
                 {
@@ -84,10 +94,4 @@ export function mapCart(cart: RawCart | null | undefined): Cart {
             ]
             : []
     )
-    return {
-        id: cart.id,
-        items,
-        itemCount: items.reduce((sum, i) => sum + i.quantity, 0),
-        total: num(cart.total) || num(cart.item_subtotal)
-    }
 }

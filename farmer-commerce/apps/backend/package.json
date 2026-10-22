@@ -14,6 +14,7 @@
   ],
   "scripts": {
     "storefront:setup": "medusa exec ./src/scripts/setup-storefront.ts",
+    "checkout:setup": "medusa exec ./src/scripts/setup-checkout.ts",
     "scrape:pilnas-puodas": "node scripts/scrape-pilnas-puodas.mjs",
     "seed": "medusa exec ./src/scripts/seed-pilnas-puodas.ts",
     "seed:pilnas-puodas": "medusa exec ./src/scripts/seed-pilnas-puodas.ts",

@@ -22,7 +22,17 @@ export default defineNuxtConfig({
     medusaUrl: "http://localhost:9000",
     medusaPublishableKey: local.publishable_key || "",
     medusaRegionId: local.region_id || "",
-    public: { storeName: "Ūkio krautuvė" }
+    public: {
+      storeName: "Ūkio krautuvė",
+      // Override with NUXT_PUBLIC_PICKUP_ADDRESS, NUXT_PUBLIC_PICKUP_CITY, etc.
+      pickup: {
+        name: "Atsiėmimas ūkyje",
+        address: "",
+        city: "",
+        postalCode: "",
+        hours: ""
+      }
+    }
   },
   app: {
     head: {

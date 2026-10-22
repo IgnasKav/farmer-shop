@@ -1,5 +1,6 @@
 import type { H3Event } from "h3"
 import { cartFields, cartIdPattern } from "../../shared/cart"
+import { orderIdPattern } from "../../shared/checkout"
 import { medusa, upstreamError } from "./medusa"
 
 const COOKIE = "cart_id"
@@ -24,12 +25,22 @@ export function forgetCart(event: H3Event) {
     deleteCookie(event, COOKIE, { path: "/" })
 }
 
-export async function loadCart(event: H3Event) {
+// Only the browser that placed an order may view its confirmation.
+const ORDER_COOKIE = "order_id"
+export function rememberOrder(event: H3Event, id: string) {
+    setCookie(event, ORDER_COOKIE, id, { ...cookieOptions, maxAge: 60 * 60 })
+}
+export function orderIdFrom(event: H3Event) {
+    const id = getCookie(event, ORDER_COOKIE)
+    return id && orderIdPattern.test(id) ? id : null
+}
+
+export async function loadCart(event: H3Event, fields = cartFields) {
     const id = cartIdFrom(event)
     if (!id) return null
     const { sdk } = medusa()
     try {
-        const { cart } = await sdk.store.cart.retrieve(id, { fields: cartFields })
+        const { cart } = await sdk.store.cart.retrieve(id, { fields })
         if ((cart as { completed_at?: unknown }).completed_at) {
             forgetCart(event)
             return null
