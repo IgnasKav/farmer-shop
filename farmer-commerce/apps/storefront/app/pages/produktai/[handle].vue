@@ -25,7 +25,7 @@ const money = (amount: number) =>
     amount,
   );
 useSeoMeta({
-  title: () => `${product.value?.title || "Produktas"} â€” Åªkio krautuvÄ—`,
+  title: () => `${product.value?.title || "Produktas"} — Ūkio krautuvė`,
   description: () => product.value?.description.slice(0, 160),
 });
 </script>
@@ -58,7 +58,7 @@ useSeoMeta({
           <button
             v-for="(image, index) in images"
             :key="image"
-            :aria-label="`PerÅ¾iÅ«rÄ—ti ${index + 1} nuotraukÄ…`"
+            :aria-label="`Peržiūrėti ${index + 1} nuotrauką`"
             :aria-pressed="imageIndex === index"
             @click="imageIndex = index"
           >
@@ -94,7 +94,7 @@ useSeoMeta({
         <label
           v-if="product.variants.length > 1"
           class="my-5 flex flex-col gap-2 text-xs [&>select]:rounded [&>select]:border [&>select]:border-line [&>select]:bg-white [&>select]:p-3"
-          >Pasirinkite dydÄ¯<select v-model="selected">
+          >Pasirinkite dydį<select v-model="selected">
             <option
               v-for="(v, index) in product.variants"
               :key="v.id"
@@ -110,21 +110,21 @@ useSeoMeta({
             '!text-[#96705b] [&>span]:!bg-[#b79475]': !variant?.available,
           }"
         >
-          <span />{{ variant?.available ? "Yra kataloge" : "Å iuo metu nÄ—ra" }}
+          <span />{{ variant?.available ? "Yra kataloge" : "Šiuo metu nėra" }}
         </p>
         <div
           class="mt-6 border-t border-line pt-6 [&>h2]:mb-4 [&>h2]:text-[19px] [&>p]:whitespace-pre-line [&>p]:text-sm [&>p]:leading-relaxed [&>p]:text-[#68715f]"
         >
-          <h2>Apie produktÄ…</h2>
+          <h2>Apie produktą</h2>
           <p>
             {{
               product.description ||
-              "Daugiau informacijos apie Å¡Ä¯ produktÄ… netrukus."
+              "Daugiau informacijos apie šį produktą netrukus."
             }}
           </p>
         </div>
         <NuxtLink class="mt-5 inline-block text-xs underline" to="/#katalogas"
-          >â† Toliau atrasti gÄ—rybes</NuxtLink
+          >← Toliau atrasti gėrybes</NuxtLink
         >
       </div>
     </div>

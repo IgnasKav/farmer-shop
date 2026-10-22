@@ -1,4 +1,4 @@
-﻿<script setup lang="ts">
+<script setup lang="ts">
 import type { Product } from "../../shared/types";
 defineProps<{ product: Product }>();
 const money = (amount: number) =>
@@ -15,7 +15,7 @@ const money = (amount: number) =>
         <ProductImage :src="product.thumbnail" :alt="product.title" /><span
           v-if="!product.available"
           class="absolute left-2.5 top-2.5 rounded-sm bg-white/80 px-2 py-1 text-[10px]"
-          >Å iuo metu nÄ—ra</span
+          >Šiuo metu nėra</span
         ><span
           class="absolute bottom-2.5 right-2.5 grid size-[33px] place-items-center rounded-full bg-white/95 text-green opacity-0 transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100 max-[680px]:hidden"
           ><AppIcon name="arrow"
@@ -25,7 +25,7 @@ const money = (amount: number) =>
         <p
           class="mb-2 text-[8px] font-semibold uppercase tracking-[1.2px] text-[#838b77] max-[680px]:text-[7px]"
         >
-          {{ product.categories[0] || "KrautuvÄ—s gÄ—rybÄ—s" }}
+          {{ product.categories[0] || "Krautuvės gėrybės" }}
         </p>
         <h3
           class="mb-[7px] min-h-10 text-[13px] font-[650] leading-[1.55] max-[680px]:min-h-[54px] max-[680px]:text-xs max-[680px]:leading-normal"
