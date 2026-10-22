@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import type { Product } from "../../shared/types";
+import { ArrowRightIcon } from "@lucide/vue";
+
 defineProps<{ product: Product }>();
 const money = (amount: number) =>
   new Intl.NumberFormat("lt-LT", { style: "currency", currency: "EUR" }).format(
@@ -46,7 +48,7 @@ const money = (amount: number) =>
           <span
             class="grid size-10 shrink-0 place-items-center rounded-full bg-green text-white transition duration-300 group-hover:bg-[#29442d] group-hover:[&>svg]:translate-x-0.5 max-[680px]:size-8 [&>svg]:transition-transform"
             aria-hidden="true"
-            ><AppIcon name="arrow" :size="18"
+            ><ArrowRightIcon :size="18" :stroke-width="1.6"
           /></span>
         </div>
       </div>

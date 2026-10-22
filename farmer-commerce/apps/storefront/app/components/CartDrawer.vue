@@ -1,4 +1,12 @@
 <script setup lang="ts">
+import {
+  MinusIcon,
+  PlusIcon,
+  ShoppingCartIcon,
+  Trash2Icon,
+  XIcon,
+} from "@lucide/vue";
+
 const { cart, pending, error, isOpen, refresh, setQuantity, remove } =
   useCart();
 const root = ref<HTMLElement | null>(null);
@@ -77,7 +85,7 @@ const stepper =
       :aria-label="`Krepšelis: ${cart.itemCount}`"
       @click="toggle"
     >
-      <AppIcon name="cart" :size="22" />
+      <ShoppingCartIcon :size="22" :stroke-width="1.6" />
       <span
         v-if="cart.itemCount > 0"
         class="absolute -right-1 -top-1 grid h-[18px] min-w-[18px] place-items-center rounded-full bg-green px-1 text-[10px] font-semibold text-white"
@@ -109,7 +117,7 @@ const stepper =
               aria-label="Uždaryti krepšelį"
               @click="close(true)"
             >
-              <AppIcon name="close" :size="18" />
+              <XIcon :size="18" :stroke-width="1.6" />
             </button>
           </div>
           <p
@@ -167,7 +175,7 @@ const stepper =
                       :aria-label="`Sumažinti kiekį: ${item.title}`"
                       @click="setQuantity(item.id, item.quantity - 1)"
                     >
-                      <AppIcon name="minus" :size="14" />
+                      <MinusIcon :size="14" :stroke-width="1.6" />
                     </button>
                     <span class="min-w-6 text-center" aria-live="polite">{{
                       item.quantity
@@ -179,7 +187,7 @@ const stepper =
                       :aria-label="`Padidinti kiekį: ${item.title}`"
                       @click="setQuantity(item.id, item.quantity + 1)"
                     >
-                      <AppIcon name="plus" :size="14" />
+                      <PlusIcon :size="14" :stroke-width="1.6" />
                     </button>
                   </div>
                 </div>
@@ -194,7 +202,7 @@ const stepper =
                     :aria-label="`Pašalinti: ${item.title}`"
                     @click="remove(item.id)"
                   >
-                    <AppIcon name="trash" :size="16" />
+                    <Trash2Icon :size="16" :stroke-width="1.6" />
                   </button>
                 </div>
               </li>

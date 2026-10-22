@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { Order } from "../../../shared/types";
+import { CheckIcon } from "@lucide/vue";
 const route = useRoute();
 const { data: order, error } = await useFetch<Order>(
   () => `/api/orders/${encodeURIComponent(String(route.params.id))}`,
@@ -26,7 +27,7 @@ useSeoMeta({ title: "Užsakymas pateiktas — Ūkio krautuvė", robots: "noindex
     class="mx-auto max-w-[760px] px-5 pb-20 pt-10 max-[680px]:pt-4"
   >
     <div class="rounded-2xl border border-line bg-white p-8 max-[680px]:p-5">
-      <AppIcon class="text-green" name="check" :size="36" />
+      <CheckIcon class="text-green" :size="36" :stroke-width="1.6" />
       <h1
         class="mt-3 text-[32px] font-semibold tracking-[-1.2px] max-[680px]:text-[26px]"
       >

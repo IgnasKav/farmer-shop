@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { LeafIcon } from "@lucide/vue";
+
 const config = useRuntimeConfig();
 </script>
 <template>
@@ -17,7 +19,7 @@ const config = useRuntimeConfig();
         aria-label="Į pagrindinį puslapį"
         ><span
           class="grid size-12 place-items-center rounded-full border border-[#ccd3c3] max-[680px]:size-[39px]"
-          ><AppIcon name="leaf" :size="29" /></span
+          ><LeafIcon :size="29" :stroke-width="1.6" /></span
         ><span
           >{{ config.public.storeName
           }}<small

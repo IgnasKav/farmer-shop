@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import type { Product } from "../../../shared/types";
+import { MinusIcon, PlusIcon, ShoppingCartIcon } from "@lucide/vue";
+
 const route = useRoute();
 const { data: product, error } = await useFetch<Product>(
   () => `/api/products/${encodeURIComponent(String(route.params.handle))}`,
@@ -137,7 +139,7 @@ useSeoMeta({
               aria-label="Sumažinti kiekį"
               @click="quantity--"
             >
-              <AppIcon name="minus" :size="16" />
+              <MinusIcon :size="16" :stroke-width="1.6" />
             </button>
             <span class="min-w-8 text-center text-sm" aria-live="polite">{{
               quantity
@@ -149,7 +151,7 @@ useSeoMeta({
               aria-label="Padidinti kiekį"
               @click="quantity++"
             >
-              <AppIcon name="plus" :size="16" />
+              <PlusIcon :size="16" :stroke-width="1.6" />
             </button>
           </div>
           <button
@@ -158,7 +160,7 @@ useSeoMeta({
             :disabled="!canBuy || pending"
             @click="addToCart"
           >
-            <AppIcon name="cart" :size="18" /> Į krepšelį
+            <ShoppingCartIcon :size="18" :stroke-width="1.6" /> Į krepšelį
           </button>
         </div>
         <p class="mt-3 min-h-4 text-xs" aria-live="polite">

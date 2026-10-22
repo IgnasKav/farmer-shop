@@ -5,6 +5,7 @@ import {
   type DetailErrors,
 } from "../../shared/checkout";
 import type { CheckoutState } from "../../shared/types";
+import { LeafIcon, ShoppingCartIcon } from "@lucide/vue";
 
 useSeoMeta({ title: "Apmokėjimas — Ūkio krautuvė" });
 const pickup = useRuntimeConfig().public.pickup;
@@ -81,7 +82,7 @@ async function submit() {
       v-else-if="!cart?.items.length"
       class="rounded-md bg-[#f0f2e9] px-[25px] py-[60px] text-center"
     >
-      <AppIcon class="mx-auto mb-5" name="cart" :size="36" />
+      <ShoppingCartIcon class="mx-auto mb-5" :size="36" :stroke-width="1.6" />
       <h2 class="text-[23px] font-semibold">Krepšelis tuščias</h2>
       <p class="mb-5 mt-2 text-sm text-muted">
         Pridėkite produktų, kad galėtumėte pateikti užsakymą.
@@ -197,7 +198,7 @@ async function submit() {
           <div
             class="flex items-start gap-3 rounded-[5px] border border-green bg-white p-4 text-sm"
           >
-            <AppIcon class="mt-0.5 text-green" name="leaf" :size="20" />
+            <LeafIcon class="mt-0.5 text-green" :size="20" :stroke-width="1.6" />
             <div>
               <p class="font-semibold">{{ pickup.name }} · nemokamai</p>
               <p v-if="pickup.address" class="mt-1 text-muted">

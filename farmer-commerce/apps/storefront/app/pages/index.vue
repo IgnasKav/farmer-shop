@@ -1,5 +1,13 @@
 <script setup lang="ts">
 import type { Catalog } from "../../shared/types";
+import {
+  ArrowRightIcon,
+  LeafIcon,
+  SearchIcon,
+  SlidersHorizontalIcon,
+  XIcon,
+} from "@lucide/vue";
+
 const route = useRoute();
 const router = useRouter();
 const query = computed(() => ({
@@ -92,7 +100,7 @@ const wrap =
           />Atraskite skonius, kuriems norisi palikti vietos ant stalo.
         </p>
         <a :class="primaryButton" href="#katalogas"
-          >Atrasti produktus <AppIcon name="arrow"
+          >Atrasti produktus <ArrowRightIcon :stroke-width="1.6"
         /></a>
       </div>
       <div
@@ -106,7 +114,7 @@ const wrap =
         <div
           class="absolute right-6 top-6 z-[1] flex size-[99px] rotate-[10deg] flex-col items-center justify-center gap-[5px] rounded-full bg-[#f5f1df] text-center text-[11px] max-[680px]:right-[18px] max-[680px]:top-4 max-[680px]:size-20"
         >
-          <AppIcon name="leaf" :size="26" /><span
+          <LeafIcon :size="26" :stroke-width="1.6" /><span
             >Įkvėpta<br /><strong class="font-serif text-xl font-normal"
               >gamtos</strong
             ></span
@@ -129,7 +137,7 @@ const wrap =
       aria-labelledby="catalog-title"
     >
       <div
-        class="mb-[35px] flex items-center justify-between gap-[25px] max-[680px]:mb-[22px] max-[680px]:flex-col max-[680px]:items-stretch max-[680px]:gap-[21px]"
+        class="mb-[35px] flex items-center justify-between gap-[25px] max-[680px]:mb-[22px]"
       >
         <div>
           <h2
@@ -143,24 +151,6 @@ const wrap =
             >
           </h2>
         </div>
-        <form
-          class="relative w-[350px] max-[1000px]:w-[290px] max-[680px]:w-full"
-          role="search"
-          @submit.prevent="update({ q: search.trim() || undefined })"
-        >
-          <AppIcon
-            class="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground"
-            name="search"
-            :size="16"
-          /><UiInput
-            v-model="search"
-            class="pl-9"
-            type="search"
-            aria-label="Ieškoti produktų"
-            placeholder="Ko šiandien ieškote?"
-            maxlength="120"
-          />
-        </form>
       </div>
       <div
         class="grid grid-cols-[215px_1fr] gap-[38px] min-[1450px]:grid-cols-[220px_1fr] max-[1000px]:grid-cols-[180px_1fr] max-[1000px]:gap-[25px] max-[680px]:grid-cols-1 max-[680px]:gap-0"
@@ -180,19 +170,19 @@ const wrap =
               aria-label="Uždaryti filtrus"
               @click="mobileFilters = false"
             >
-              <AppIcon name="close" />
+              <XIcon :stroke-width="1.6" />
             </button>
           </div>
-          <label class="relative mb-[13px] block"
-            ><AppIcon
-              class="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-muted"
-              name="search"
-              :size="16" /><UiInput
+          <UiInputGroup class="mb-[13px] bg-white">
+            <UiInputGroupInput
               v-model="categorySearch"
-              class="bg-white pl-9 text-xs md:text-xs"
               placeholder="Rasti kategoriją"
               aria-label="Rasti kategoriją"
-          /></label>
+            />
+            <UiInputGroupAddon>
+              <SearchIcon :size="16" />
+            </UiInputGroupAddon>
+          </UiInputGroup>
           <nav
             class="flex max-h-[650px] flex-col gap-[3px] overflow-auto pr-[5px] [scrollbar-color:#ccd4c1_transparent] [scrollbar-width:thin] max-[680px]:max-h-[330px]"
             aria-label="Produktų kategorijos"
@@ -233,14 +223,15 @@ const wrap =
         </aside>
         <div :aria-busy="status === 'pending'">
           <div
-            class="mb-[22px] flex min-h-[37px] items-center justify-between gap-4 max-[680px]:flex-wrap max-[680px]:gap-[7px]"
+            class="mb-[22px] flex min-h-[37px] items-center justify-between gap-4 max-[1000px]:flex-wrap max-[680px]:gap-[7px]"
           >
             <button
               class="hidden min-h-[37px] items-center gap-[7px] rounded-[5px] border border-line bg-transparent px-[11px] py-2 text-[11px] font-semibold max-[680px]:flex"
               :aria-expanded="mobileFilters"
               @click="mobileFilters = !mobileFilters"
             >
-              <AppIcon name="filter" /> Kategorijos
+              <SlidersHorizontalIcon :size="16" :stroke-width="1.6" />
+              Kategorijos
             </button>
             <p
               class="text-xs text-[#747c6d] max-[680px]:order-3 max-[680px]:mt-2.5 max-[680px]:basis-full max-[680px]:text-[11px]"
@@ -249,20 +240,43 @@ const wrap =
               {{ data?.count ?? 0 }} produktai
               <span v-if="selectedCategory">· {{ selectedCategory }}</span>
             </p>
-            <label class="flex items-center gap-2 whitespace-nowrap text-[11px]"
-              ><span class="text-muted max-[1000px]:hidden">Rikiuoti:</span
-              ><select
-                class="max-w-[190px] cursor-pointer rounded border border-line bg-transparent py-[9px] pl-[9px] pr-6 text-[11px] text-ink max-[680px]:max-w-[182px] max-[680px]:text-[10px]"
-                :value="query.sort"
-                aria-label="Rikiuoti pagal kainą"
-                @change="
-                  update({ sort: ($event.target as HTMLSelectElement).value })
-                "
-              >
-                <option value="price-asc">Kaina: nuo mažiausios</option>
-                <option value="price-desc">Kaina: nuo didžiausios</option>
-              </select></label
+            <div
+              class="flex min-w-0 flex-1 items-center justify-end gap-4 max-[1000px]:basis-full max-[680px]:justify-between max-[680px]:gap-2"
             >
+              <form
+                class="min-w-0 flex-1 max-w-[350px]"
+                role="search"
+                @submit.prevent="update({ q: search.trim() || undefined })"
+              >
+                <UiInputGroup>
+                  <UiInputGroupInput
+                    v-model="search"
+                    type="search"
+                    aria-label="Ieškoti produktų"
+                    placeholder="Ko šiandien ieškote?"
+                    maxlength="120"
+                  />
+                  <UiInputGroupAddon>
+                    <SearchIcon :size="16" />
+                  </UiInputGroupAddon>
+                </UiInputGroup>
+              </form>
+              <label
+                class="flex shrink-0 items-center gap-2 whitespace-nowrap text-[11px]"
+                ><span class="text-muted max-[1000px]:hidden">Rikiuoti:</span
+                ><select
+                  class="max-w-[190px] cursor-pointer rounded border border-line bg-transparent py-[9px] pl-[9px] pr-6 text-[11px] text-ink max-[680px]:max-w-[182px] max-[680px]:text-[10px]"
+                  :value="query.sort"
+                  aria-label="Rikiuoti pagal kainą"
+                  @change="
+                    update({ sort: ($event.target as HTMLSelectElement).value })
+                  "
+                >
+                  <option value="price-asc">Kaina: nuo mažiausios</option>
+                  <option value="price-desc">Kaina: nuo didžiausios</option>
+                </select></label
+              >
+            </div>
           </div>
           <div
             v-if="selectedCategory || route.query.q"
@@ -273,13 +287,15 @@ const wrap =
               class="flex items-center gap-[9px] rounded bg-[#e9eedf] px-2.5 py-[7px] text-[11px]"
               @click="update({ category: undefined })"
             >
-              {{ selectedCategory }} <AppIcon name="close" :size="14" /></button
+              {{ selectedCategory }}
+              <XIcon :size="14" :stroke-width="1.6" /></button
             ><button
               v-if="route.query.q"
               class="flex items-center gap-[9px] rounded bg-[#e9eedf] px-2.5 py-[7px] text-[11px]"
               @click="update({ q: undefined })"
             >
-              „{{ route.query.q }}“ <AppIcon name="close" :size="14" /></button
+              „{{ route.query.q }}“
+              <XIcon :size="14" :stroke-width="1.6" /></button
             ><NuxtLink class="ml-2 text-[11px] underline" to="/#katalogas"
               >Išvalyti filtrus</NuxtLink
             >
@@ -289,7 +305,7 @@ const wrap =
             class="rounded-md bg-[#f0f2e9] px-[25px] py-[60px] text-center"
             role="alert"
           >
-            <AppIcon class="mx-auto mb-5" name="leaf" :size="36" />
+            <LeafIcon class="mx-auto mb-5" :size="36" :stroke-width="1.6" />
             <h3 class="text-[23px]">Nepavyko atverti katalogo</h3>
             <p class="text-sm text-muted">
               {{
@@ -317,7 +333,7 @@ const wrap =
             "
             class="rounded-md bg-[#f0f2e9] px-[25px] py-[60px] text-center"
           >
-            <AppIcon class="mx-auto mb-5" name="search" :size="36" />
+            <SearchIcon class="mx-auto mb-5" :size="36" :stroke-width="1.6" />
             <h3 class="text-[23px]">
               {{
                 currentPage > data.pages
