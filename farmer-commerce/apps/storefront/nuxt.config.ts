@@ -12,6 +12,12 @@ export default defineNuxtConfig({
   compatibilityDate: "2026-10-21",
   devtools: { enabled: false },
   css: ["~/assets/main.css"],
+  postcss: {
+    plugins: {
+      tailwindcss: {},
+      autoprefixer: {},
+    },
+  },
   runtimeConfig: {
     medusaUrl: "http://localhost:9000",
     medusaPublishableKey: local.publishable_key || "",
