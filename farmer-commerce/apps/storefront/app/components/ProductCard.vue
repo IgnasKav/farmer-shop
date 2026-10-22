@@ -8,37 +8,46 @@ const money = (amount: number) =>
 </script>
 <template>
   <article class="min-w-0">
-    <NuxtLink :to="`/produktai/${product.handle}`" class="group block h-full">
+    <NuxtLink
+      :to="`/produktai/${product.handle}`"
+      class="group flex h-full flex-col rounded-[26px] bg-white p-2.5 shadow-[0_1px_2px_rgba(38,55,43,0.04),0_8px_24px_-12px_rgba(38,55,43,0.12)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_2px_4px_rgba(38,55,43,0.05),0_22px_40px_-16px_rgba(38,55,43,0.22)] max-[680px]:rounded-[20px] max-[680px]:p-2"
+    >
       <div
-        class="relative aspect-[1.1] overflow-hidden rounded bg-[#eeeee7] max-[680px]:aspect-square [&>img]:absolute [&>img]:h-full [&>img]:w-full [&>img]:object-cover [&>img]:transition-transform [&>img]:duration-300 group-hover:[&>img]:scale-105"
+        class="relative aspect-square overflow-hidden rounded-[18px] bg-[#eeeee7] max-[680px]:rounded-2xl [&>img]:absolute [&>img]:size-full [&>img]:object-cover [&>img]:transition-transform [&>img]:duration-500 group-hover:[&>img]:scale-105"
       >
-        <ProductImage :src="product.thumbnail" :alt="product.title" /><span
+        <ProductImage :src="product.thumbnail" :alt="product.title" />
+        <span
           v-if="!product.available"
-          class="absolute left-2.5 top-2.5 rounded-sm bg-white/80 px-2 py-1 text-[10px]"
+          class="absolute left-3 top-3 rounded-full bg-white/90 px-2.5 py-1 text-[10px] font-medium backdrop-blur"
           >Šiuo metu nėra</span
-        ><span
-          class="absolute bottom-2.5 right-2.5 grid size-[33px] place-items-center rounded-full bg-white/95 text-green opacity-0 transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100 max-[680px]:hidden"
-          ><AppIcon name="arrow"
-        /></span>
-      </div>
-      <div class="px-px pt-3.5">
-        <p
-          class="mb-2 text-[8px] font-semibold uppercase tracking-[1.2px] text-[#838b77] max-[680px]:text-[7px]"
         >
-          {{ product.categories[0] || "Krautuvės gėrybės" }}
-        </p>
+        <span
+          v-else-if="product.categories[0]"
+          class="absolute left-3 top-3 max-w-[calc(100%-24px)] truncate rounded-full bg-white/90 px-2.5 py-1 text-[10px] font-medium text-[#4d5a43] backdrop-blur max-[680px]:left-2 max-[680px]:top-2"
+          >{{ product.categories[0] }}</span
+        >
+      </div>
+      <div class="flex flex-1 flex-col px-2 pb-1.5 pt-4 max-[680px]:px-1">
         <h3
-          class="mb-[7px] min-h-10 text-[13px] font-[650] leading-[1.55] max-[680px]:min-h-[54px] max-[680px]:text-xs max-[680px]:leading-normal"
+          class="mb-1 line-clamp-2 min-h-[40px] text-[14px] font-[650] leading-[1.4] max-[680px]:min-h-[34px] max-[680px]:text-[12px]"
         >
           {{ product.title }}
         </h3>
-        <p class="mb-3 text-[10px] text-muted">{{ product.unit }}</p>
-        <div
-          class="flex items-center justify-between gap-1.5 border-t border-line pt-2.5 [&>strong]:text-base [&>strong]:font-semibold max-[680px]:[&>strong]:text-sm"
-        >
-          <strong>{{
-            product.amount === null ? "Kaina nenurodyta" : money(product.amount)
-          }}</strong>
+        <p class="text-[11px] text-muted">{{ product.unit }}</p>
+        <div class="mt-4 flex items-center justify-between gap-2">
+          <strong
+            class="text-[19px] font-semibold tracking-tight max-[680px]:text-[15px]"
+            >{{
+              product.amount === null
+                ? "Kaina nenurodyta"
+                : money(product.amount)
+            }}</strong
+          >
+          <span
+            class="grid size-10 shrink-0 place-items-center rounded-full bg-green text-white transition duration-300 group-hover:bg-[#29442d] group-hover:[&>svg]:translate-x-0.5 max-[680px]:size-8 [&>svg]:transition-transform"
+            aria-hidden="true"
+            ><AppIcon name="arrow" :size="18"
+          /></span>
         </div>
       </div>
     </NuxtLink>
