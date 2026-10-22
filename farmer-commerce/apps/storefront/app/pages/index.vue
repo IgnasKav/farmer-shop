@@ -144,24 +144,22 @@ const wrap =
           </h2>
         </div>
         <form
-          class="flex min-h-[46px] w-[350px] items-center gap-3 rounded-[5px] border border-line bg-white py-1 pl-3.5 pr-[7px] max-[1000px]:w-[290px] max-[680px]:w-full"
+          class="relative w-[350px] max-[1000px]:w-[290px] max-[680px]:w-full"
           role="search"
           @submit.prevent="update({ q: search.trim() || undefined })"
         >
-          <AppIcon name="search" /><input
+          <AppIcon
+            class="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground"
+            name="search"
+            :size="16"
+          /><UiInput
             v-model="search"
-            class="w-full border-0 bg-transparent py-2 text-xs outline-none"
+            class="pl-9"
             type="search"
             aria-label="Ieškoti produktų"
             placeholder="Ko šiandien ieškote?"
             maxlength="120"
-          /><button
-            type="submit"
-            class="grid min-h-8 min-w-8 place-items-center rounded bg-[#eff1e9]"
-            aria-label="Ieškoti"
-          >
-            <AppIcon name="arrow" />
-          </button>
+          />
         </form>
       </div>
       <div
@@ -185,11 +183,13 @@ const wrap =
               <AppIcon name="close" />
             </button>
           </div>
-          <label
-            class="mb-[13px] flex items-center gap-[7px] border-b border-line pb-3 text-[#89917e]"
-            ><AppIcon name="search" :size="16" /><input
+          <label class="relative mb-[13px] block"
+            ><AppIcon
+              class="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-muted"
+              name="search"
+              :size="16" /><UiInput
               v-model="categorySearch"
-              class="max-w-[175px] border-0 bg-transparent text-[11px] outline-none max-[680px]:w-full max-[680px]:max-w-none"
+              class="bg-white pl-9 text-xs md:text-xs"
               placeholder="Rasti kategoriją"
               aria-label="Rasti kategoriją"
           /></label>

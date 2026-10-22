@@ -40,8 +40,6 @@ const money = (amount: number) =>
     amount,
   );
 
-const field =
-  "w-full rounded-[5px] border border-line bg-white px-3.5 py-3 text-sm aria-[invalid=true]:border-[#b4533a]";
 const order: (keyof CheckoutDetails)[] = [
   "email",
   "firstName",
@@ -108,10 +106,9 @@ async function submit() {
             <label
               class="col-span-2 flex flex-col gap-1.5 text-xs max-[680px]:col-span-1"
               >El. paštas
-              <input
+              <UiInput
                 id="field-email"
                 v-model="form.email"
-                :class="field"
                 type="email"
                 name="email"
                 autocomplete="email"
@@ -129,10 +126,9 @@ async function submit() {
             </label>
             <label class="flex flex-col gap-1.5 text-xs"
               >Vardas
-              <input
+              <UiInput
                 id="field-firstName"
                 v-model="form.firstName"
-                :class="field"
                 name="firstName"
                 autocomplete="given-name"
                 maxlength="80"
@@ -151,10 +147,9 @@ async function submit() {
             </label>
             <label class="flex flex-col gap-1.5 text-xs"
               >Pavardė
-              <input
+              <UiInput
                 id="field-lastName"
                 v-model="form.lastName"
-                :class="field"
                 name="lastName"
                 autocomplete="family-name"
                 maxlength="80"
@@ -174,10 +169,9 @@ async function submit() {
             <label
               class="col-span-2 flex flex-col gap-1.5 text-xs max-[680px]:col-span-1"
               >Telefonas
-              <input
+              <UiInput
                 id="field-phone"
                 v-model="form.phone"
-                :class="field"
                 type="tel"
                 name="phone"
                 autocomplete="tel"

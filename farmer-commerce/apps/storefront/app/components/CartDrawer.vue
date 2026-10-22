@@ -208,7 +208,7 @@ const stepper =
               }}</strong>
             </div>
             <NuxtLink
-              to="/apmokejimas"
+              to="/checkout"
               class="mt-4 inline-flex min-h-11 w-full items-center justify-center rounded-[5px] bg-green px-5 py-3 text-xs font-semibold text-white hover:bg-[#29442d]"
               @click="close()"
             >

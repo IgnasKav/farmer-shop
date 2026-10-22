@@ -8,8 +8,10 @@ export default <Partial<Config>>{
                 paper: "#faf9f6",
                 ink: "#26372b",
                 green: "#39563c",
-                muted: "#74796f",
+                muted: { DEFAULT: "#74796f", foreground: "#74796f" },
                 line: "#e3e4dc",
+                input: "#d5d8cc",
+                ring: "#39563c",
                 pale: "#edf0e6",
             },
             fontFamily: {
